@@ -6,7 +6,7 @@ import RepositoryItem from './Repository-Item/Repository-Item';
 import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
 import TableFooter from '@material-ui/core/TableFooter';
-import * as routes from '../../../constants/routes';
+import * as routes from '../../../Common/constants/routes';
 import {
     useHistory,
     useLocation
@@ -32,9 +32,8 @@ function RepositoryList() {
     const [before, setBefore] = useState(null);
 
     const handleChangePage = (event, newPage) => {
-        setPage(newPage);
         if (data) {
-            if (data['user']['repositories']['pageInfo']['hasNextPage']) {
+            if (page < newPage) {
                 setAfter(data['user']['repositories']['pageInfo']['endCursor']);
                 setBefore(null);
             } else {
@@ -42,6 +41,7 @@ function RepositoryList() {
                 setAfter(null);
             }
         }
+        setPage(newPage);
     };
 
     const handleChangeRowsPerPage = event => {

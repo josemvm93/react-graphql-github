@@ -21,9 +21,8 @@ function UserList({valueUserName}) {
     const [before, setBefore] = useState(null);
 
     const handleChangePage = (event, newPage) => {
-        setPage(newPage);
         if (data) {
-            if (data['search']['pageInfo']['hasNextPage']) {
+            if (page < newPage) {
                 setAfter(data['search']['pageInfo']['endCursor']);
                 setBefore(null);
             } else {
@@ -31,6 +30,7 @@ function UserList({valueUserName}) {
                 setAfter(null);
             }
         }
+        setPage(newPage);
     };
 
     const handleChangeRowsPerPage = event => {

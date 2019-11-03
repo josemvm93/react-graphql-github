@@ -1,7 +1,7 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import './User-Item.css';
-import * as routes from '../../../../constants/routes';
+import * as routes from '../../../../Common/constants/routes';
 
 import {Link} from "react-router-dom";
 
