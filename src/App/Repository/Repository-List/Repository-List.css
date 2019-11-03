@@ -1,0 +1,31 @@
+.menuButton {
+
+}
+.title {
+    text-align: center;
+}
+.bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.backTitle {
+    font-size: medium;
+}
+
+.titleContainer {
+    flex: 60%;
+    display: flex;
+    align-self: center;
+    justify-content: flex-start;
+    padding-left: 0pt;
+}
+
+.backContainer {
+    flex: 20%;
+}
+
+.resultContainer {
+    display: flex;
+    flex-direction: column;
+}

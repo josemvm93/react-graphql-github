@@ -1,10 +1,16 @@
 import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import './User-Item.css';
+import * as routes from '../../../../constants/routes';
+
+import {Link} from "react-router-dom";
+
 
 function UserItem({user}) {
     return (
-        <ListItem button className="listItem">
+        <ListItem className="listItem" component={Link} to={{
+            pathname: routes.REPOSITORIES,
+            search: user['node']['login']}}>
             <div className="userContainer">
                 <div className="userName">
                     {user['node']['name'] ? user['node']['name'] : 'NO NAME'}

@@ -4,6 +4,14 @@
     align-items: flex-start;
     justify-content: space-between;
 }
+.listItem:hover{
+    background-color: dodgerblue;
+    opacity: 0.80;
+}
+.listItem:hover *{
+    color: white;
+    text-decoration-color: white;
+}
 .userContainer {
     flex: 65%;
     display: flex;
@@ -14,13 +22,17 @@
 }
 .userName {
     font-size: 20pt;
+    color: black;
+    font-weight: 100;
 
 }
 .userDescription {
     font-size: 12.8pt;
+    color: black;
 }
 .prCount {
     flex: 35%;
     padding-right: 16pt;
     padding-left: 2pt;
+    color: black;
 }

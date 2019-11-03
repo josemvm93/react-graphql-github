@@ -5,8 +5,11 @@ import SearchUser from '../User/Search-User/Search-User';
 function Home() {
     const title = 'GitHub Repositories';
     return (
-        <h1>{title}</h1>,
-        <SearchUser></SearchUser>
+        <div>
+            <h1 className="title">{title}</h1>
+            <SearchUser></SearchUser>
+        </div>
+
     );
 }
 

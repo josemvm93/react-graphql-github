@@ -1,0 +1,33 @@
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.repositoryContainer {
+    flex: 65%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.rightRepositoryContainer {
+
+}
+.leftRepositoryContainer{
+    padding-left: 10pt;
+}
+.repositoryName {
+    font-size: 20pt;
+    color: black;
+    font-weight: 100;
+
+}
+.repositoryDescription {
+    font-size: 16pt;
+    color: black;
+}
+
+.avatarImg {
+    width: 16pt;
+}

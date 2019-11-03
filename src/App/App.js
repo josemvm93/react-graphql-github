@@ -8,25 +8,20 @@ import {
 } from "react-router-dom";
 import Home from './Home/Home';
 import {CssBaseline, Container, Typography} from '@material-ui/core';
-
+import RepositoryList from './Repository/Repository-List/Repository-List';
 
 function App() {
-    const title = 'GitHub Repositories';
     return (
         <React.Fragment>
             <CssBaseline/>
             <Container maxWidth="sm" className="App">
-                <h1 className="title">{title}</h1>
                 <Typography component="div" className="background">
                     <Router>
                         <Switch>
+                            <Route path={routes.REPOSITORIES}>
+                                <RepositoryList></RepositoryList>
+                            </Route>
                             <Route path={routes.HOME}>
-                                <Home></Home>
-                            </Route>
-                            <Route path={routes.USER}>
-                                <h2>USER</h2>
-                            </Route>
-                            <Route path="/">
                                 <Home></Home>
                             </Route>
                         </Switch>
