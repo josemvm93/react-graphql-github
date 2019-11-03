@@ -29,3 +29,9 @@
     display: flex;
     flex-direction: column;
 }
+.noResults {
+    display: flex;
+    justify-content: center;
+    color: black;
+    padding: 15pt;
+}

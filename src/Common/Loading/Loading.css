@@ -1,0 +1,10 @@
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+    padding: 20pt;
+}
+.circularProgress {
+    width: 20pt;
+}

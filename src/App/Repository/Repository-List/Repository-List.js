@@ -16,6 +16,8 @@ import IconButton from '@material-ui/core/IconButton';
 import './Repository-List.css';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIos from '@material-ui/icons/ArrowBackIos';
+import Loading from '../../../Common/Loading/Loading';
+import ErrorMessage from "../../../Common/Error/ErrorMessage";
 
 function RepositoryList() {
     let location = useLocation();
@@ -90,11 +92,14 @@ function RepositoryList() {
                 </div>
                 <div className="titleContainer">
                     <Typography variant="h5" className="title">
-                        {data && data['user']['name'] ? data['user']['name']: 'NO USER'}
+                        {data && data['user']['name']}
                     </Typography>
                 </div>
             </div>
             <div className="resultContainer">
+                {loading && <Loading/>}
+                {error && <ErrorMessage error={error}/>}
+                {repositoriesCount === 0 && <span class="noResults">No results found</span>}
                 <div>
                     <List component="nav" aria-label="main mailbox folders">
                         {

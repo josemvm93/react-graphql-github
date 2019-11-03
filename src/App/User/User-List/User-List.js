@@ -7,6 +7,9 @@ import UserItem from './User-Item/User-Item';
 import TableRow from '@material-ui/core/TableRow';
 import Table from '@material-ui/core/Table';
 import TableFooter from '@material-ui/core/TableFooter';
+import Loading from '../../../Common/Loading/Loading';
+import ErrorMessage from '../../../Common/Error/ErrorMessage';
+import './User-List.css';
 
 function UserList({valueUserName}) {
     const [page, setPage] = useState(0);
@@ -56,11 +59,12 @@ function UserList({valueUserName}) {
         )
     );
 
-    // if (loading) return 'Loading...';
-    // if (error) return 'Something Bad Happened';
     return (
         <div>
-            <div>
+            <div className="resultContainer">
+                {loading && <Loading/>}
+                {error && <ErrorMessage error={error}/>}
+                {usersCount === 0 && <span class="noResults">No results found</span>}
                 <List component="nav" aria-label="main mailbox folders">
                     {
                         renderUsers()
