@@ -1,0 +1,26 @@
+.listItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.userContainer {
+    flex: 65%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 16pt;
+    padding-left: 16pt;
+
+}
+.userName {
+    font-size: 20pt;
+
+}
+.userDescription {
+    font-size: 12.8pt;
+}
+.prCount {
+    flex: 35%;
+    padding-right: 16pt;
+    padding-left: 2pt;
+}

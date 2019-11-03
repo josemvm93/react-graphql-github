@@ -1,0 +1,13 @@
+.background {
+    background-color: whitesmoke;
+    min-height: 20rem;
+    padding: 2rem;
+}
+.App {
+    elevation: higher;
+    z-index: 10;
+    border-style: groove;
+}
+.App > .title {
+    text-align: start;
+}

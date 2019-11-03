@@ -1,52 +1,52 @@
-import React, { useState, useEffect} from 'react';
-/*import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import CircularProgress from '@material-ui/core/CircularProgress';*/
-import {useQuery} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import '../'
-
-const QUERY_USER = gql`
-    query($userName: String!, $last: Int!) {
-        search(query: $userName, type: USER, last: $last) {
-            pageInfo {
-                startCursor
-                endCursor
-                hasNextPage
-                hasPreviousPage
-            }
-            userCount
-            repositoryCount
-            edges {
-                node {
-                ...user
-                }
-            }
-        }
-    }
-    ${USER_FRAGMENT}
-`;
+import React, { useState} from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Search from '@material-ui/icons/Search';
+import UserList from '../User-List/User-List';
 
 
+const useStyles = makeStyles(theme => ({
+    margin: {
+        margin: theme.spacing(1),
+    },
+    button: {
+        margin: theme.spacing(1),
+    },
+    input: {
+        display: 'none',
+    },
+}));
 
 function SearchUser() {
-    /*const [userName, setUserName]= useState('');
-    const [open, setOpen] = React.useState(false);
-    const [options, setOptions] = React.useState([]);
-    const loading = open && options.length === 0;*/
-    /*const rganizationName = 'josemvm93';*/
-    const { loading, error, data } = useQuery(QUERY_USER, {
-        variables: {
-            userName: 'maria',
-            last: 10
-        }
-    });
-
-    if (loading) return 'Loading...';
-    if (error) return 'Something Bad Happened';
+    const classes = useStyles();
+    const [userName, setUserName]= useState('');
+    const handleChange = event => {
+        setUserName(event.target.value);
+    };
 
     return (
-        <h1>hola</h1>
+        <div>
+            <div className={classes.margin}>
+                <Grid container spacing={1} alignItems="flex-end">
+                    <Grid item xs={12}>
+                        <Grid container spacing={1} alignItems="flex-end">
+                            <Grid item xs={12}>
+                                <TextField fullWidth id="input-user-name" variant="filled" label="GitHub Name" placeholder="Search GitHub..."
+                                           InputProps={{
+                                               startAdornment: <InputAdornment position="start"><Search /></InputAdornment>,
+                                           }}
+                                           value={userName}
+                                           onChange={handleChange}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <UserList valueUserName={userName}></UserList>
+            </div>
+        </div>
     );
 }
 export default SearchUser;
