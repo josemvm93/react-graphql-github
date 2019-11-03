@@ -64,7 +64,7 @@ function UserList({valueUserName}) {
             <div className="resultContainer">
                 {loading && <Loading/>}
                 {error && <ErrorMessage error={error}/>}
-                {usersCount === 0 && <span class="noResults">No results found</span>}
+                {usersCount === 0 && <span className="noResults">No results found</span>}
                 <List component="nav" aria-label="main mailbox folders">
                     {
                         renderUsers()

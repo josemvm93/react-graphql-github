@@ -26,7 +26,7 @@ function RepositoryList() {
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [repositoriesCount, setRepositoriesCount] = useState(0);
     const [repositories, setRepositories] = useState([]);
-
+    const [userLogin, setUserLogin] = useState("");
 
     const [after, setAfter] = useState(null);
     const [before, setBefore] = useState(null);
@@ -45,14 +45,14 @@ function RepositoryList() {
     };
 
     const handleChangeRowsPerPage = event => {
-        setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
+        setRowsPerPage(parseInt(event.target.value, 10));
     };
 
     const { loading, error, data } = useQuery(QUERY_USER_REPOSITORY, {
         variables: {
-            userLogin: location['search'].replace('?',''),
-            last: rowsPerPage,
+            userLogin: userLogin,
+            first: rowsPerPage,
             after: after,
             before: before
         }
@@ -66,10 +66,11 @@ function RepositoryList() {
     useEffect(
         () => {
             if (location && location['search']) {
-                if (data) {
-                    setRepositories(data['user']['repositories']['edges'])
-                    setRepositoriesCount(data['user']['repositories']['totalCount']);
-                }
+                setUserLogin(location['search'].replace('?',''));
+            }
+            if (data) {
+                setRepositories(data['user']['repositories']['edges'])
+                setRepositoriesCount(data['user']['repositories']['totalCount']);
             }
         },
         [location, data]
@@ -99,7 +100,7 @@ function RepositoryList() {
             <div className="resultContainer">
                 {loading && <Loading/>}
                 {error && <ErrorMessage error={error}/>}
-                {repositoriesCount === 0 && <span class="noResults">No results found</span>}
+                {repositoriesCount === 0 && <span className="noResults">No results found</span>}
                 <div>
                     <List component="nav" aria-label="main mailbox folders">
                         {

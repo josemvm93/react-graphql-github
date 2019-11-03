@@ -25,15 +25,15 @@ export const QUERY_USER = gql`
 
 
 export const QUERY_USER_REPOSITORY = gql`
-    query($userLogin: String!, $after: String, $before: String) {
+    query($userLogin: String!, $first:Int!, $after: String, $before: String) {
       user(login: $userLogin) {
         avatarUrl,
         name,
         login,
         location,
         repositories(
-            first: 5
-            orderBy: { direction: DESC, field: STARGAZERS }
+            first: $first,
+            orderBy: { direction: DESC, field: NAME }
             after: $after,
             before: $before
           ) {
